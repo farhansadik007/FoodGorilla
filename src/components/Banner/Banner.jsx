@@ -11,6 +11,7 @@ const Banner = () => {
                 <img src="food.png" />
                 <Link to='/recipes'><button className='btn btn-warning btn-wide btn-lg mt-24'>All Recipes</button></Link>
             </div>
+            
         </div>
     );
 };
