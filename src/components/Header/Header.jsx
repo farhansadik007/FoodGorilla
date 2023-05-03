@@ -4,7 +4,7 @@ import { FaUserCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
-    const user = true;
+    const user = false;
     const handleLogOut = () => { }
     return (
         <div className="navbar bg-base-100 flex justify-between">
@@ -20,19 +20,17 @@ const Header = () => {
                         <Link to="/">Recipes</Link>
                     </li>
                     <li>
-                        <div>
 
                         {user &&
                             <FaUserCircle style={{ fontSize: '3rem'}} />
                             
                         }
-                        </div>
                         <div>
 
                         {user ?
-                            <Button onClick={handleLogOut} variant='secondary' className='text-white'>Logout</Button> :
+                            <Button onClick={handleLogOut} className='text-white'>Logout</Button> :
                             <Link to='/login'>
-                                <Button variant='secondary' className='text-white'>Login</Button>
+                                <Button className='text-white'>Login</Button>
                             </Link>
                         }
                         </div>
