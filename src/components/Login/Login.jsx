@@ -3,9 +3,10 @@ import { Form, Link, useLocation, useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
 import { FaGithub } from 'react-icons/fa';
 import { AuthContext } from '../AuthProvider/AuthProvider';
+import toast, {Toaster} from 'react-hot-toast';
 
 const Login = () => {
-    const {signIn, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
+    const { signIn, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/'
@@ -17,37 +18,40 @@ const Login = () => {
         const password = form.password.value;
 
         signIn(email, password)
-        .then(result => {
-            const loggedUser = result.user;
-            navigate(from, {replace: true});
-        })
-        .catch(error => {
-            console.log(error);
-        })
+            .then(result => {
+                const loggedUser = result.user;
+                navigate(from, { replace: true });
+            })
+            .catch(error => {
+                console.log(error);
+                toast.error("Wrong Email or Password!")
+            })
     }
 
     const handleGoogleSignIn = () => {
         signInWithGoogle()
-        .then(result => {
-            const loggedUser  = result.user;
-        })
-        .catch(error => console.log(error))
+            .then(result => {
+                const loggedUser = result.user;
+            })
+            .catch(error => console.log(error))
     }
     const handleGithubSignIn = () => {
         signInWithGithub()
-        .then(result => {
-            const loggedUser = result.user;
-        })
-        .catch(error => console.log(error))
+            .then(result => {
+                const loggedUser = result.user;
+
+            })
+            .catch(error => console.log(error))
     }
 
 
     return (
         <div className='flex flex-col items-center mt-16'>
-                <div className='flex flex-col items-center'>
-                    <img className='w-36' src="foodgorilla.png" alt="" />
-                    <Link to='/' className="btn btn-ghost normal-case text-4xl font-bold">Food<span className="text-lime-400">Gorilla</span></Link>
-                </div>
+            <div><Toaster/></div>
+            <div className='flex flex-col items-center'>
+                <img className='w-36' src="foodgorilla.png" alt="" />
+                <Link to='/' className="btn btn-ghost normal-case text-4xl font-bold">Food<span className="text-lime-400">Gorilla</span></Link>
+            </div>
             <Form onSubmit={handleLogin} className='w-full max-w-xs flex flex-col items-center'>
                 <div className="form-control w-full max-w-xs mt-10">
                     <label className="label">

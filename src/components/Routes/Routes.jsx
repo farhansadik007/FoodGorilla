@@ -10,13 +10,7 @@ import Error from '../Error/Error';
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <Main></Main>,
-        children: [
-            {
-                path: '/',
-                element: <Banner></Banner>
-            }
-        ]
+        element: <Main></Main>
     },
     {
         path: '/',
