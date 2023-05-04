@@ -1,16 +1,54 @@
-import React from 'react';
-import { Form, Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Form, Link, useLocation, useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
 import { FaGithub } from 'react-icons/fa';
+import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const Login = () => {
+    const {signIn, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/'
+
+    const handleLogin = event => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        signIn(email, password)
+        .then(result => {
+            const loggedUser = result.user;
+            navigate(from, {replace: true});
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    }
+
+    const handleGoogleSignIn = () => {
+        signInWithGoogle()
+        .then(result => {
+            const loggedUser  = result.user;
+        })
+        .catch(error => console.log(error))
+    }
+    const handleGithubSignIn = () => {
+        signInWithGithub()
+        .then(result => {
+            const loggedUser = result.user;
+        })
+        .catch(error => console.log(error))
+    }
+
+
     return (
         <div className='flex flex-col items-center mt-16'>
                 <div className='flex flex-col items-center'>
                     <img className='w-36' src="foodgorilla.png" alt="" />
                     <Link to='/' className="btn btn-ghost normal-case text-4xl font-bold">Food<span className="text-lime-400">Gorilla</span></Link>
                 </div>
-            <Form onSubmit={1} className='w-full max-w-xs flex flex-col items-center'>
+            <Form onSubmit={handleLogin} className='w-full max-w-xs flex flex-col items-center'>
                 <div className="form-control w-full max-w-xs mt-10">
                     <label className="label">
                         <span className="label-text">Email</span>
@@ -27,13 +65,13 @@ const Login = () => {
             </Form>
             <div>
                 <div className="w-full max-w-xs mt-10">
-                    <button className="btn btn-wide">
+                    <button onClick={handleGoogleSignIn} className="btn btn-wide">
                         <FcGoogle style={{ fontSize: '1.5rem' }} />
                         <span className='pl-5'>Sign In with Google</span>
                     </button>
                 </div>
                 <div className="w-full max-w-xs mt-10">
-                    <button className="btn btn-wide">
+                    <button onClick={handleGithubSignIn} className="btn btn-wide">
                         <FaGithub style={{ fontSize: '1.5rem' }} />
                         <span className='pl-5'>Sign In with Github</span>
                     </button>

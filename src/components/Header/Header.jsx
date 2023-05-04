@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { FaUserCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const Header = () => {
-    const user = false;
-    const handleLogOut = () => { }
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+        .then(()=>{})
+        .catch(error => console.log(error))
+    }
+
     return (
         <div className="navbar bg-base-100 flex justify-between">
             <div>
@@ -22,7 +29,9 @@ const Header = () => {
                     <li>
 
                         {user &&
+                            <button className="tooltip tooltip-bottom" data-tip={`${user.email}`}>
                             <FaUserCircle style={{ fontSize: '3rem'}} />
+                            </button>
                             
                         }
                         <div>
