@@ -7,6 +7,8 @@ import Login from '../Login/Login';
 import Register from '../Register/Register';
 import Error from '../Error/Error';
 import RecipeDetails from '../RecipeDetails/RecipeDetails';
+import Blog from '../Blog/Blog';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
 const router = createBrowserRouter([
     {
@@ -19,21 +21,25 @@ const router = createBrowserRouter([
             },
             {
                 path: '/recipes/:id',
-                element: <RecipeDetails></RecipeDetails>,
+                element: <PrivateRoute><RecipeDetails></RecipeDetails></PrivateRoute>,
                 loader: ({params}) => fetch(`http://localhost:5000/recipes/${params.id}`)
+            },
+            {
+                path: '/blog',
+                element: <Blog></Blog>
             }
         ]
     },
     {
-        path: '/',
+        path: '/auth',
         element: <LoginRegister></LoginRegister>,
         children: [
             {
-                path: '/login',
+                path: '/auth/login',
                 element: <Login></Login>
             },
             {
-                path: '/register',
+                path: '/auth/register',
                 element: <Register></Register>
             }
         ]

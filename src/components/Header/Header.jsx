@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { FaUserCircle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const Header = () => {
@@ -21,9 +21,9 @@ const Header = () => {
             </div>
             <div>
                 <ul className="menu menu-horizontal px-1 flex items-center">
-                    <li className='pr-8'>
-                        <Link to="/">Home</Link>
-                        <Link to="/">Blog</Link>
+                    <li className='mr-8'>
+                        <NavLink className="mr-8" to='/'>Home</NavLink>
+                        <NavLink to='/blog'>Blog</NavLink>
                     </li>
                     <li>
 
@@ -37,7 +37,7 @@ const Header = () => {
 
                         {user ?
                             <Button onClick={handleLogOut} className='text-white'>Logout</Button> :
-                            <Link to='/login'>
+                            <Link to='/auth/login'>
                                 <Button className='text-white'>Login</Button>
                             </Link>
                         }

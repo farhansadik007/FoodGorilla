@@ -9,7 +9,7 @@ const Login = () => {
     const { signIn, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || '/'
+    const from = location.state?.from?.pathname || '/' ;
 
     const handleLogin = event => {
         event.preventDefault();
@@ -26,20 +26,21 @@ const Login = () => {
                 console.log(error);
                 toast.error("Wrong Email or Password!")
             })
-    }
-
-    const handleGoogleSignIn = () => {
-        signInWithGoogle()
+        }
+        
+        const handleGoogleSignIn = () => {
+            signInWithGoogle()
             .then(result => {
                 const loggedUser = result.user;
+                navigate(from, { replace: true });
             })
             .catch(error => console.log(error))
-    }
-    const handleGithubSignIn = () => {
-        signInWithGithub()
+        }
+        const handleGithubSignIn = () => {
+            signInWithGithub()
             .then(result => {
                 const loggedUser = result.user;
-
+                navigate(from, { replace: true });
             })
             .catch(error => console.log(error))
     }
