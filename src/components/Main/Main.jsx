@@ -9,7 +9,7 @@ const Main = () => {
     return (
         <div>
             <Header></Header>
-            <Banner></Banner>
+            <Outlet></Outlet>
             <Footer></Footer>
         </div>
     );

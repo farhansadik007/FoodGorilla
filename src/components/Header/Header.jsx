@@ -16,7 +16,7 @@ const Header = () => {
     return (
         <div className="navbar bg-base-100 flex justify-between">
             <div>
-                <img className='w-24' src="foodgorilla.png" alt="" />
+                <img className='w-24' src="/foodgorilla.png" alt="" />
                 <Link to='/' className="btn btn-ghost normal-case text-4xl font-bold">Food<span className="text-lime-400">Gorilla</span></Link>
             </div>
             <div>
@@ -24,7 +24,6 @@ const Header = () => {
                     <li className='pr-8'>
                         <Link to="/">Home</Link>
                         <Link to="/">Blog</Link>
-                        <Link to="/">Recipes</Link>
                     </li>
                     <li>
 

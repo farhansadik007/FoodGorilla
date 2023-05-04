@@ -4,7 +4,7 @@ const Footer = () => {
     return (
         <footer className="footer p-10 bg-lime-300 text-base-content">
             <div>
-                <img className='w-48' src='foodgorilla.png'/>
+                <img className='w-48' src='/foodgorilla.png'/>
                 <p className='text-3xl'><span className='text-5xl font-bold'>FoodGorilla</span><br />Your Personal Chef</p>
             </div>
             <div>
