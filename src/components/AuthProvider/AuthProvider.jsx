@@ -21,11 +21,13 @@ const AuthProvider = ({children}) => {
         setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
     }
-
+    
     const signInWithGoogle = () => {
+        setLoading(true);
         return signInWithPopup(auth, googleAuthProvider);
     }
     const signInWithGithub = () => {
+        setLoading(true);
         return signInWithPopup(auth, githubAuthProvider);
     }
 
