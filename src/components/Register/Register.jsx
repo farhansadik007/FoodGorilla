@@ -80,7 +80,7 @@ const Register = () => {
 
             <div className='mt-10'>
                 Already a member?
-                <Link className='text-lime-600 text-lg' to='/login'> Login</Link>
+                <Link className='text-lime-600 text-lg' to='/auth/login'> Login</Link>
             </div>
         </div>
     );

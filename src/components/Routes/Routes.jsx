@@ -22,7 +22,7 @@ const router = createBrowserRouter([
             {
                 path: '/recipes/:id',
                 element: <PrivateRoute><RecipeDetails></RecipeDetails></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/recipes/${params.id}`)
+                loader: ({params}) => fetch(`https://foodgorilla-server.vercel.app/recipes/${params.id}`)
             },
             {
                 path: '/blog',

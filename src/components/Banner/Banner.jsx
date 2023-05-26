@@ -6,7 +6,7 @@ const Banner = () => {
     const [chefs, setChefs] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/chefs')
+        fetch('https://foodgorilla-server.vercel.app/chefs')
             .then(res => res.json())
             .then(data => setChefs(data))
             .catch(error => console.log(error))
@@ -14,7 +14,7 @@ const Banner = () => {
 
     return (
         <div className='flex flex-col items-center'>
-            <div className='flex items-center'>
+            <div className='flex items-center max-lg:flex-col'>
                 <div className='p-36 w-3/4'>
                     <h1 className='text-9xl  font-light'>Welcome to <span className='font-bold'>Food<span className='text-lime-400'>Gorilla</span></span></h1>
                 </div>

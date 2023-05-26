@@ -84,7 +84,7 @@ const Login = () => {
             </div>
             <div className='mt-10'>
                 New to FoodGorilla?
-                <Link className='text-lime-600 text-lg' to='/register'> Register</Link>
+                <Link className='text-lime-600 text-lg' to='/auth/register'> Register</Link>
             </div>
         </div>
 
